@@ -1,0 +1,15 @@
+date,category,amount,description
+2024-01-01,Housing,1500.00,Monthly Rent
+2024-01-02,Food,85.50,Grocery Store - Whole Foods
+2024-01-03,Transportation,45.00,Gas Station
+2024-01-05,Food,32.50,Restaurant - Pizza Place
+2024-01-07,Entertainment,120.00,Movie Tickets & Dinner
+2024-01-08,Utilities,150.00,Electric Bill
+2024-01-10,Shopping,200.00,Amazon Purchase
+2024-01-12,Food,95.00,Grocery Store
+2024-01-15,Transportation,50.00,Uber Rides
+2024-01-18,Entertainment,45.00,Netflix Subscription
+2024-01-20,Food,28.50,Coffee Shop
+2024-01-22,Utilities,80.00,Internet Bill
+2024-01-25,Food,110.00,Grocery Store
+2024-01-28,Shopping,75.00,Clothing Store

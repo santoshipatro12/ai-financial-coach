@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinMate AI - Your Personal Finance Agent</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loader"></div>
+            <h2 class="loading-text">Initializing FinMate AI...</h2>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span class="logo-text">FinMate AI</span>
+                </div>
+            </div>
+            <div class="nav-center">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#dashboard" class="nav-link">Dashboard</a>
+                <a href="#analytics" class="nav-link">Analytics</a>
+                <a href="#chat" class="nav-link">AI Chat</a>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=User&background=B35BFF&color=fff" alt="User">
+                    <span class="status-dot"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-container">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Powered by Google AI
+                </div>
+                <h1 class="hero-title">
+                    Your Personal
+                    <span class="gradient-text">Finance AI Agent</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Track, analyze, and optimize your money effortlessly with intelligent insights powered by Google's ADK
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('chat')">
+                        <i class="fas fa-comments"></i>
+                        Start Chat
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('dashboard')">
+                        <i class="fas fa-chart-line"></i>
+                        View Dashboard
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">$12,450</div>
+                        <div class="stat-label">Monthly Income</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$8,230</div>
+                        <div class="stat-label">Total Expenses</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">34%</div>
+                        <div class="stat-label">Savings Rate</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="ai-demo-card">
+                    <div class="ai-demo-header">
+                        <div class="ai-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="typing-indicator">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="ai-demo-content">
+                        <p class="typing-text" id="aiDemoText"></p>
+                    </div>
+                </div>
+                <div class="floating-elements">
+                    <div class="float-coin coin-1">💰</div>
+                    <div class="float-coin coin-2">📊</div>
+                    <div class="float-coin coin-3">💳</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="section-header">
+            <h2 class="section-title">Intelligent Financial Agents</h2>
+            <p class="section-subtitle">Multi-agent system working together to optimize your finances</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card" data-agent="budget">
+                <div class="feature-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <h3 class="feature-title">Budget Analyzer</h3>
+                <p class="feature-description">AI analyzes spending patterns and recommends optimizations</p>
+                <div class="feature-stats">
+                    <span class="stat-badge">Smart Insights</span>
+                </div>
+            </div>
+
+            <div class="feature-card" data-agent="expense">
+                <div class="feature-icon">
+                    <i class="fas fa-receipt"></i>
+                </div>
+                <h3 class="feature-title">Expense Classifier</h3>
+                <p class="feature-description">Automatic categorization of transactions with ML</p>
+                <div class="feature-stats">
+                    <span class="stat-badge">Auto Categories</span>
+                </div>
+            </div>
+
+            <div class="feature-card" data-agent="savings">
+                <div class="feature-icon">
+                    <i class="fas fa-piggy-bank"></i>
+                </div>
+                <h3 class="feature-title">Savings Planner</h3>
+                <p class="feature-description">Personalized savings strategies and emergency funds</p>
+                <div class="feature-stats">
+                    <span class="stat-badge">Goal Tracking</span>
+                </div>
+            </div>
+
+            <div class="feature-card" data-agent="debt">
+                <div class="feature-icon">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <h3 class="feature-title">Debt Optimizer</h3>
+                <p class="feature-description">Avalanche & snowball methods for faster payoff</p>
+                <div class="feature-stats">
+                    <span class="stat-badge">Interest Saved</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard-section">
+        <div class="section-header">
+            <h2 class="section-title">Financial Dashboard</h2>
+            <div class="dashboard-controls">
+                <button class="btn-icon" onclick="refreshDashboard()">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                <button class="btn-icon" onclick="exportData()">
+                    <i class="fas fa-download"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Income Input Card -->
+            <div class="dashboard-card income-card">
+                <div class="card-header">
+                    <h3>Monthly Income</h3>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <span class="input-prefix">$</span>
+                        <input type="number" id="incomeInput" placeholder="5000" class="glass-input">
+                    </div>
+                    <button class="btn btn-primary btn-sm" onclick="updateIncome()">
+                        Update Income
+                    </button>
+                </div>
+            </div>
+
+            <!-- CSV Upload Card -->
+            <div class="dashboard-card upload-card">
+                <div class="card-header">
+                    <h3>Upload Transactions</h3>
+                    <i class="fas fa-file-csv"></i>
+                </div>
+                <div class="card-body">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag & Drop CSV or Click to Browse</p>
+                        <input type="file" id="csvFileInput" accept=".csv" hidden>
+                    </div>
+                    <button class="btn btn-secondary btn-sm" onclick="document.getElementById('csvFileInput').click()">
+                        <i class="fas fa-file-upload"></i>
+                        Choose File
+                    </button>
+                    <button class="btn btn-secondary btn-sm" onclick="loadSampleData()">
+                        <i class="fas fa-database"></i>
+                        Load Sample Data
+                    </button>
+                </div>
+            </div>
+
+            <!-- Expense Breakdown Chart -->
+            <div class="dashboard-card chart-card">
+                <div class="card-header">
+                    <h3>Expense Breakdown</h3>
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <div class="card-body">
+                    <canvas id="expenseChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Income vs Expenses Chart -->
+            <div class="dashboard-card chart-card">
+                <div class="card-header">
+                    <h3>Income vs Expenses</h3>
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="card-body">
+                    <canvas id="incomeExpenseChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Savings Goals -->
+            <div class="dashboard-card goals-card">
+                <div class="card-header">
+                    <h3>Savings Goals</h3>
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <div class="card-body">
+                    <div class="goal-item">
+                        <div class="goal-info">
+                            <span class="goal-name">Emergency Fund</span>
+                            <span class="goal-amount">$5,000 / $10,000</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-info">
+                            <span class="goal-name">Vacation</span>
+                            <span class="goal-amount">$2,500 / $5,000</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-sm" onclick="openGoalModal()">
+                        <i class="fas fa-plus"></i>
+                        Add Goal
+                    </button>
+                </div>
+            </div>
+
+            <!-- Debt Overview -->
+            <div class="dashboard-card debt-card">
+                <div class="card-header">
+                    <h3>Debt Overview</h3>
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="card-body">
+                    <div id="debtList" class="debt-list">
+                        <!-- Dynamically populated -->
+                    </div>
+                    <button class="btn btn-primary btn-sm" onclick="openDebtModal()">
+                        <i class="fas fa-plus"></i>
+                        Add Debt
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Chat Section -->
+    <section id="chat" class="chat-section">
+        <div class="section-header">
+            <h2 class="section-title">AI Financial Advisor</h2>
+            <p class="section-subtitle">Ask anything about your finances</p>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ai-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! I'm your AI Financial Coach powered by Google's ADK. I can help you with:</p>
+                        <ul>
+                            <li>📊 Analyzing your spending patterns</li>
+                            <li>💰 Creating budget plans</li>
+                            <li>🎯 Setting savings goals</li>
+                            <li>💳 Optimizing debt payments</li>
+                        </ul>
+                        <p>How can I assist you today?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="quick-actions">
+                    <button class="quick-action" onclick="sendQuickMessage('Analyze my expenses')">
+                        📊 Analyze Expenses
+                    </button>
+                    <button class="quick-action" onclick="sendQuickMessage('Create a budget plan')">
+                        💰 Budget Plan
+                    </button>
+                    <button class="quick-action" onclick="sendQuickMessage('Show savings strategy')">
+                        🎯 Savings Strategy
+                    </button>
+                    <button class="quick-action" onclick="sendQuickMessage('Optimize my debt')">
+                        💳 Debt Payoff
+                    </button>
+                </div>
+                <div class="chat-input-wrapper">
+                    <button class="chat-btn" onclick="attachFile()">
+                        <i class="fas fa-paperclip"></i>
+                    </button>
+                    <input type="text" id="chatInput" class="chat-input" placeholder="Ask about your finances...">
+                    <button class="chat-btn" onclick="toggleVoice()">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <button class="chat-btn send-btn" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics Section -->
+    <section id="analytics" class="analytics-section">
+        <div class="section-header">
+            <h2 class="section-title">Deep Analytics</h2>
+        </div>
+        <div class="analytics-grid">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Monthly Trends</h3>
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="card-body">
+                    <canvas id="trendsChart"></canvas>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>Category Insights</h3>
+                    <i class="fas fa-tags"></i>
+                </div>
+                <div class="card-body">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Goal Modal -->
+    <div id="goalModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Savings Goal</h3>
+                <button class="modal-close" onclick="closeGoalModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Goal Name</label>
+                    <input type="text" id="goalName" class="glass-input" placeholder="e.g., New Car">
+                </div>
+                <div class="form-group">
+                    <label>Target Amount</label>
+                    <input type="number" id="goalAmount" class="glass-input" placeholder="10000">
+                </div>
+                <div class="form-group">
+                    <label>Current Savings</label>
+                    <input type="number" id="goalCurrent" class="glass-input" placeholder="2000">
+                </div>
+                <button class="btn btn-primary" onclick="addGoal()">Add Goal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Debt Modal -->
+    <div id="debtModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Debt</h3>
+                <button class="modal-close" onclick="closeDebtModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Debt Name</label>
+                    <input type="text" id="debtName" class="glass-input" placeholder="e.g., Credit Card">
+                </div>
+                <div class="form-group">
+                    <label>Balance</label>
+                    <input type="number" id="debtBalance" class="glass-input" placeholder="5000">
+                </div>
+                <div class="form-group">
+                    <label>Interest Rate (%)</label>
+                    <input type="number" id="debtRate" class="glass-input" placeholder="18.5" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label>Minimum Payment</label>
+                    <input type="number" id="debtMinPayment" class="glass-input" placeholder="150">
+                </div>
+                <button class="btn btn-primary" onclick="addDebt()">Add Debt</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <span>FinMate AI</span>
+                </div>
+                <p>Powered by Google's Agent Development Kit</p>
+            </div>
+            <div class="footer-links">
+                <a href="#privacy">Privacy</a>
+                <a href="#terms">Terms</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/api.js"></script>
+    <script src="static/js/charts.js"></script>
+    <script src="static/js/main.js"></script>
+</body>
+</html>
